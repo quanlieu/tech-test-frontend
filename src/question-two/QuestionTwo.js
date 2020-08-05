@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { SectionGroup } from '../components/section/SectionGroup'
 import { SectionPanel } from '../components/section/SectionPanel'
+import { Swimlane } from '../components/swimlane/Swimlane'
+
+import {
+  decorateDataForSwimlane,
+  joinDataSourceForQuestionTwo,
+  fetchDataForQuestionTwo,
+} from '../service/helpers'
 
 import './QuestionTwo.css';
 
@@ -11,11 +18,26 @@ import './QuestionTwo.css';
 const RANGE_START = new Date('2018-09-01T00:00:00Z')
 const RANGE_END = new Date('2018-09-01T24:00:00Z')
 
-export const QuestionTwo = (props) => {
+export const QuestionTwo = () => {
+  const [lanes, setLanes] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      const results = await fetchDataForQuestionTwo()
+      const dataSource = joinDataSourceForQuestionTwo(results)
+      const decoratedDataSource = decorateDataForSwimlane(dataSource)
+      setLanes(decoratedDataSource)
+    }
+    getData()
+  }, [])
+
   return (
     <SectionGroup>
       <SectionPanel>
-        Please refer to INSTRUCTIONS.md
+        <Swimlane
+          start={RANGE_START}
+          end={RANGE_END}
+          lanes={lanes}
+        />
       </SectionPanel>
     </SectionGroup>
   )
