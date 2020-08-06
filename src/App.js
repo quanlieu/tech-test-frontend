@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import './reset.css'
 
 import { DataService } from './service/DataService'
 import { QuestionOne } from './question-one/QuestionOne'

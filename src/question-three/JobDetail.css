@@ -1,0 +1,41 @@
+.jobDetail {
+  background-color: #ffffff;
+  margin: 5px 5px 10px;
+  padding: 20px;
+  line-height: 1.4;
+  font-size: 12px;
+  letter-spacing: 0;
+  position: relative;
+}
+
+.jobDetail__id {
+  color: #c4c4c4;
+}
+
+.jobDetail__name {
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.jobDetail__time {
+  color: #8d8383;
+  font-weight: bold;
+}
+
+.jobDetail__allocation {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+
+  line-height: 40px;
+  border: 1px solid #3d9fff;
+  color: #3d9fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+

@@ -1,0 +1,53 @@
+.three__container {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+.three__sideBar {
+  background-color: #223048;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 50px;
+}
+
+.three__sideBarIcon {
+  background-color: #c4c4c4;
+  border-radius: 18px;
+  height: 36px;
+  width: 36px;
+  margin: 7px 0;
+}
+
+.three__content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70px);
+  flex-grow: 1;
+}
+
+.three__header {
+  width: 100%;
+}
+
+.three__columns {
+  display: flex;
+  flex-grow: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.three__leftColumn {
+  padding: 5px;
+  background-color: #e4eef1;
+  overflow: scroll;
+  width: 34%;
+}
+
+.three__rightColumn {
+  box-sizing: border-box;
+  padding: 5px 5px 0;
+  overflow: scroll;
+  width: 66%;
+}

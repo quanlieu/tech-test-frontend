@@ -34,7 +34,7 @@ export const DataService = {
       query: gql`
       query {
         jobs {
-          id, name, start, end
+          id, name, start, end, location,
         }
       }
       `})

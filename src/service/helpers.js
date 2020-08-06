@@ -57,3 +57,17 @@ export const decorateDataForSwimlane = (dataSource) => {
     ]
   }))
 }
+
+export const joinDataSourceForQuestionThree = ({ jobs, jobAllocations }) => {
+  const jobsObj = arrayToObject(jobs.map(ele => ({ ...ele, allocationCount: 0 })), 'id')
+  jobAllocations.forEach(ele => {
+    jobsObj[ele.job.id].allocationCount += 1
+  })
+  return Object.values(jobsObj)
+}
+
+export const fetchDataForQuestionThree = async () => {
+  const { getJobs, getJobAllocations } = DataService
+  const [jobs, jobAllocations] = await Promise.all([getJobs(), getJobAllocations()])
+  return { jobs, jobAllocations }
+}

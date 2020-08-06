@@ -3,9 +3,16 @@ import {
   joinDataSourceForQuestionTwo,
   fetchDataForQuestionTwo,
   decorateDataForSwimlane,
+  joinDataSourceForQuestionThree,
+  fetchDataForQuestionThree,
 } from './helpers'
 import { DataService } from "./DataService"
-import { rawDataSource, dataSourceResult, decoratedDataSource } from "./fixtures"
+import {
+  rawDataSource,
+  dataSourceResultQuestionTwo,
+  decoratedDataSourceQuestionTwo,
+  dataSourceResultQuestionThree,
+} from "./fixtures"
 
 describe('Helpers', () => {
   it('arrayToObject', () => {
@@ -20,11 +27,7 @@ describe('Helpers', () => {
   })
 
   it('joinDataSourceForQuestionTwo', () => {
-    expect(joinDataSourceForQuestionTwo(rawDataSource)).toEqual(dataSourceResult)
-  })
-
-  it('decorateDataForSwimlane', () => {
-    expect(decorateDataForSwimlane(dataSourceResult)).toEqual(decoratedDataSource)
+    expect(joinDataSourceForQuestionTwo(rawDataSource)).toEqual(dataSourceResultQuestionTwo)
   })
 
   it('fetchDataForQuestionTwo', async () => {
@@ -39,6 +42,24 @@ describe('Helpers', () => {
       activities: 'activities',
       jobs: 'jobs',
       activityAllocations: 'activityAllocations',
+      jobAllocations: 'jobAllocations',
+    })
+  })
+
+  it('decorateDataForSwimlane', () => {
+    expect(decorateDataForSwimlane(dataSourceResultQuestionTwo)).toEqual(decoratedDataSourceQuestionTwo)
+  })
+
+  it('joinDataSourceForQuestionThree', () => {
+    expect(joinDataSourceForQuestionThree(rawDataSource)).toEqual(dataSourceResultQuestionThree)
+  })
+
+  it('fetchDataForQuestionThree', async () => {
+    jest.spyOn(DataService, 'getJobs').mockResolvedValueOnce('jobs')
+    jest.spyOn(DataService, 'getJobAllocations').mockResolvedValueOnce('jobAllocations')
+    const result = await fetchDataForQuestionThree()
+    expect(result).toEqual({
+      jobs: 'jobs',
       jobAllocations: 'jobAllocations',
     })
   })
